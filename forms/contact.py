@@ -3,9 +3,11 @@ import streamlit as st
 import firebase_admin
 from firebase_admin import credentials, firestore
 
-# Initialize Firebase only once
+# Initialize Firebase only once using secrets
 if not firebase_admin._apps:
-    cred = credentials.Certificate("firebase_key.json") 
+    # Convert secrets to the format expected by credentials.Certificate
+    firebase_config = dict(st.secrets["firebase"])
+    cred = credentials.Certificate(firebase_config)
     firebase_admin.initialize_app(cred)
 
 db = firestore.client()
@@ -45,4 +47,3 @@ def contact_form():
                 "message": message
             })
             st.success("Your message has been sent successfully!")
-            
