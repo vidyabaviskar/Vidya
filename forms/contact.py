@@ -45,5 +45,5 @@ def contact_form():
 
             # Use non-cached client and sheet
             _, sheet = get_gsheet_client_and_sheet()
-            # sheet.append_row([name, email, message])
+            sheet.append_row([name, email, message])
             st.success("Your message has been sent successfully!")
