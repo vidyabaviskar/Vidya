@@ -50,7 +50,7 @@ pg = st.navigation({
     "Projects": [project_1_page, project_2_page, project_3_page],
 })
 
-st.logo("assests/prof_pic.png")  # NOTE: Fixed typo "assests" → "assets"
+st.logo("assests/prof_pic.png") 
 st.sidebar.text("✨ Made with love by Vidya ✨")
 
 
