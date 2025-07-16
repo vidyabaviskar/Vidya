@@ -1,11 +1,5 @@
 import streamlit as st
 
-from forms.contact import contact_form
-
-# @st.dialog("Contact Me")
-def show_contact_form():
-    contact_form()
-
 
 col1, col2 = st.columns(2, gap="small", vertical_alignment="center")
 with col1:
@@ -15,8 +9,8 @@ with col2:
     st.write(
         "I don’t just write code — I build solutions, lead with curiosity, and grow through every bug I fix."
     )
-    if st.button("Contact Me "):
-        show_contact_form()
+    # if st.button("Contact Me "):
+    #     show_contact_form()
 
 column1, column2, column3 = st.columns([3, 2, 1], gap="medium", vertical_alignment="center")
 with column1:

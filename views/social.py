@@ -41,6 +41,3 @@ for col, link in zip(cols, social_links):
         f'</a>',
         unsafe_allow_html=True
     )
-
-if st.button("Contact Me "):
-        show_contact_form()
