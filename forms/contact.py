@@ -3,7 +3,6 @@ import streamlit as st
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
-@st.cache_data(ttl=600)
 def get_gsheet_client_and_sheet():
     scope = [
         "https://spreadsheets.google.com/feeds",
@@ -44,7 +43,7 @@ def contact_form():
                 st.error("Please write a message")
                 st.stop()
 
-            # Use cached client and sheet
+            # Use non-cached client and sheet
             _, sheet = get_gsheet_client_and_sheet()
-            sheet.append_row([name, email, message])
+            # sheet.append_row([name, email, message])
             st.success("Your message has been sent successfully!")
