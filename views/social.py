@@ -8,7 +8,7 @@ def show_contact_form():
 
 st.title("Social Media")
 
-icon_size = "64"  # No 'px' for HTML width/height attribute
+icon_size = "64"  
 
 social_links = [
     {

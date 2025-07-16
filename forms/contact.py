@@ -1,16 +1,7 @@
 import re
 import streamlit as st
-import firebase_admin
-from firebase_admin import credentials, firestore
-
-# Initialize Firebase only once using secrets
-if not firebase_admin._apps:
-    # Convert secrets to the format expected by credentials.Certificate
-    firebase_config = dict(st.secrets["firebase"])
-    cred = credentials.Certificate(firebase_config)
-    firebase_admin.initialize_app(cred)
-
-db = firestore.client()
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 def is_valid_email(email):
     email_pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9]+\.[a-zA-z0-9-.]+$"
@@ -40,10 +31,15 @@ def contact_form():
                 st.error("Please write a message")
                 st.stop()
 
-            # Store data in Firestore
-            db.collection("contacts").add({
-                "name": name,
-                "email": email,
-                "message": message
-            })
+            # Google Sheets setup
+            scope = [
+                "https://spreadsheets.google.com/feeds",
+                "https://www.googleapis.com/auth/drive"
+            ]
+            creds = ServiceAccountCredentials.from_json_keyfile_dict(
+                dict(st.secrets["gcp_service_account"]), scope
+            )
+            client = gspread.authorize(creds)
+            sheet = client.open(st.secrets["gcp_service_account"]["sheet_name"]).sheet1
+            sheet.append_row([name, email, message])
             st.success("Your message has been sent successfully!")

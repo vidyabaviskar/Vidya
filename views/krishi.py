@@ -30,6 +30,6 @@ with col2:
         unsafe_allow_html=True
     )
 
-# Uncomment and update the link below if you want to embed a live preview
+
 st.subheader("In Progress")
 # components.iframe("https://your-krishi-demo-link.com/", height=600)
