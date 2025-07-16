@@ -1,9 +1,14 @@
-import re 
-
+import re
 import streamlit as st
-import requests
+import firebase_admin
+from firebase_admin import credentials, firestore
 
-WEBHOOK_URL = st.secrets["WEBHOOK_URL"]
+# Initialize Firebase only once
+if not firebase_admin._apps:
+    cred = credentials.Certificate("firebase_key.json") 
+    firebase_admin.initialize_app(cred)
+
+db = firestore.client()
 
 def is_valid_email(email):
     email_pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9]+\.[a-zA-z0-9-.]+$"
@@ -17,10 +22,6 @@ def contact_form():
         submit_button = st.form_submit_button("Submit")
 
         if submit_button:
-            if not WEBHOOK_URL:
-                st.error("Email service is not set up. Please try again later")
-                st.stop()
-
             if not name:
                 st.error("Please provide your name ")
                 st.stop()
@@ -37,11 +38,11 @@ def contact_form():
                 st.error("Please write a message")
                 st.stop()
 
-            data = {"email": email, "name": name, "message": message}
-            response = requests.post(WEBHOOK_URL, json=data)
-
-            if response.status_code ==200:
-                st.success("Your message has been sent successfully")
-            else:
-                st.error("Error in sending message")
+            # Store data in Firestore
+            db.collection("contacts").add({
+                "name": name,
+                "email": email,
+                "message": message
+            })
+            st.success("Your message has been sent successfully!")
             
