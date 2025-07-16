@@ -18,27 +18,28 @@ def contact_form():
             if not name:
                 st.error("Please provide your name ")
                 st.stop()
-
             if not email:
                 st.error("Please provide your Email ")
                 st.stop()
-
             if not is_valid_email(email):
                 st.error("Please provide your valid Email Address")
                 st.stop()
-
             if not message:
                 st.error("Please write a message")
                 st.stop()
 
-            scope = [
-                "https://spreadsheets.google.com/feeds",
-                "https://www.googleapis.com/auth/drive"
-            ]
-            creds = ServiceAccountCredentials.from_json_keyfile_dict(
-                dict(st.secrets["gcp_service_account"]), scope
-            )
-            client = gspread.authorize(creds)
-            sheet = client.open(st.secrets["gcp_service_account"]["sheet_name"]).sheet1
-            sheet.append_row([name, email, message])
-            st.success("Your message has been sent successfully!")
+            try:
+                scope = [
+                    "https://spreadsheets.google.com/feeds",
+                    "https://www.googleapis.com/auth/drive"
+                ]
+                creds = ServiceAccountCredentials.from_json_keyfile_dict(
+                    dict(st.secrets["gcp_service_account"]), scope
+                )
+                client = gspread.authorize(creds)
+                # Make sure this matches your Google Sheet's name exactly!
+                sheet = client.open(st.secrets["gcp_service_account"]["sheet_name"]).sheet1
+                sheet.append_row([name, email, message])
+                st.success("Your message has been sent successfully!")
+            except Exception as e:
+                st.error(f"Failed to send message: {e}")
