@@ -3,6 +3,19 @@ import streamlit as st
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
+@st.cache_data(ttl=600)
+def get_gsheet_client_and_sheet():
+    scope = [
+        "https://spreadsheets.google.com/feeds",
+        "https://www.googleapis.com/auth/drive"
+    ]
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(
+        dict(st.secrets["gcp_service_account"]), scope
+    )
+    client = gspread.authorize(creds)
+    sheet = client.open(st.secrets["gcp_service_account"]["sheet_name"]).sheet1
+    return client, sheet
+
 def is_valid_email(email):
     email_pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9]+\.[a-zA-z0-9-.]+$"
     return re.match(email_pattern, email) is not None
@@ -31,15 +44,7 @@ def contact_form():
                 st.error("Please write a message")
                 st.stop()
 
-            # Google Sheets setup
-            scope = [
-                "https://spreadsheets.google.com/feeds",
-                "https://www.googleapis.com/auth/drive"
-            ]
-            creds = ServiceAccountCredentials.from_json_keyfile_dict(
-                dict(st.secrets["gcp_service_account"]), scope
-            )
-            client = gspread.authorize(creds)
-            sheet = client.open(st.secrets["gcp_service_account"]["sheet_name"]).sheet1
+            # Use cached client and sheet
+            _, sheet = get_gsheet_client_and_sheet()
             sheet.append_row([name, email, message])
             st.success("Your message has been sent successfully!")
