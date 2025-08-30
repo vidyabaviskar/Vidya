@@ -91,9 +91,6 @@ def load_css():
     }
     
     /* Enhanced sidebar */
-    .css-1d391kg {
-        border-right: 3px solid var(--border-color);
-    }
     
     .sidebar .sidebar-content {
         padding: 2rem 1rem;
