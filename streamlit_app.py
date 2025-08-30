@@ -398,7 +398,7 @@ pg = st.navigation({
 # Enhanced sidebar
 st.logo("assets/prof.jpg")
 st.sidebar.markdown("""
-<div style='text-align: center; padding: 20px; border-radius: 15px; margin: 10px 0;'>
+<div style='text-align: center; background-color: #003049; padding: 20px; border-radius: 15px; margin: 10px 0;'>
     <p style='font-size: 16px; font-weight: 500; margin: 0;'>
         ✨ Crafted with passion by Vidya ✨
     </p>
