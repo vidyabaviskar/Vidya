@@ -1,5 +1,5 @@
 [theme]
-base="dark"
+base="light"
 
 # Main theme colors
 primaryColor="#C1121F"              # Strong red → buttons, accents
