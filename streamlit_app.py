@@ -101,7 +101,6 @@ def load_css():
     
     /* Sidebar navigation styling */
     .stSelectbox > div > div {
-        background: rgba(245, 241, 237, 0.9) !important;
         border: 2px solid var(--border-color) !important;
         border-radius: 15px !important;
         transition: all 0.3s ease;
