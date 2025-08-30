@@ -392,7 +392,7 @@ st.sidebar.markdown("""
     <p style='font-size: 16px; font-weight: 500; margin: 0;'>
         ✨ Crafted with passion by Vidya ✨
     </p>
-    <p style='font-size: 12px; opacity: 0.8; margin: 5px 0 0 0;'>
+    <p style='font-size: 12px; text-color: #f5f1ed; opacity: 0.8; margin: 5px 0 0 0;'>
         Building the future, one line of code at a time
     </p>
 </div>
