@@ -1,7 +1,23 @@
 [theme]
-base="dark"
-borderColor="mediumSlateBlue"
-showWidgetBorder=false
+base="light"
+
+# Main theme colors
+primaryColor="#C1121F"              # Strong red → buttons, accents
+backgroundColor="#FDF0D5"           # Soft beige → page background
+secondaryBackgroundColor="#FFFFFF"  # Clean white cards/containers
+textColor="#003049"                 # Navy blue → strong readable text
+borderColor="#669BBC"               # Muted teal → subtle borders
+
+showWidgetBorder=false              # Keep it clean
 
 [theme.sidebar]
 showWidgetBorder=true
+primaryColor="#669BBC"              # Teal for sidebar buttons/active states
+borderColor="#780000"               # Deep maroon as sidebar highlight
+backgroundColor="#003049"           # Navy blue sidebar background
+textColor="#FDF0D5"                 # Beige text for contrast
+
+[server]
+headless = true
+enableCORS = false
+enableXsrfProtection = false
