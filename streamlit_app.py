@@ -92,16 +92,10 @@ def load_css():
     
     /* Enhanced sidebar */
     .css-1d391kg {
-        background: var(--gradient-2) !important;
         border-right: 3px solid var(--border-color);
     }
     
-    .css-17eq0hr {
-        background: var(--gradient-2) !important;
-    }
-    
     .sidebar .sidebar-content {
-        background: var(--gradient-2);
         padding: 2rem 1rem;
     }
     
