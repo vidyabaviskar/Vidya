@@ -388,11 +388,11 @@ pg = st.navigation({
 # Enhanced sidebar
 st.logo("assets/prof.jpg")
 st.sidebar.markdown("""
-<div style='text-align: center; background-color: #003049; padding: 20px; border-radius: 15px; margin: 10px 0;'>
+<div style='text-align: center; background-color: #003049; color: #f5f1ed; padding: 20px; border-radius: 15px; margin: 10px 0;'>
     <p style='font-size: 16px; font-weight: 500; margin: 0;'>
         ✨ Crafted with passion by Vidya ✨
     </p>
-    <p style='font-size: 12px; text-color: #f5f1ed; opacity: 0.8; margin: 5px 0 0 0;'>
+    <p style='font-size: 12px; color: #f5f1ed; opacity: 0.8; margin: 5px 0 0 0;'>
         Building the future, one line of code at a time
     </p>
 </div>
