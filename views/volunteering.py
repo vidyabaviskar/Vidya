@@ -1,24 +1,7 @@
 import streamlit as st
-import base64
-from pathlib import Path
-
-def image_to_base64(image_path: Path) -> str:
-    """Reads an image file and returns its Base64 encoded string representation."""
-    try:
-        with open(image_path, "rb") as img_file:
-            return base64.b64encode(img_file.read()).decode('utf-8')
-    except FileNotFoundError:
-        st.error(f"Image not found at {image_path}. Please check the file path.")
-        return ""
-
-ghrhack_img_1_path = Path("assets/ghrhack.jpg")
-ghrhack_img_2_path = Path("assets/ghrhack1.jpg")
 
 
-ghrhack_img_1_b64 = image_to_base64(ghrhack_img_1_path)
-ghrhack_img_2_b64 = image_to_base64(ghrhack_img_2_path)
-
-st.markdown(f"""
+st.markdown("""
 <div class="custom-card">
     <h1 style="margin-bottom: 12px;">Volunteering</h1>
     <div class="volunteer-item" style="margin-bottom: 2rem;">
@@ -40,11 +23,6 @@ st.markdown(f"""
            <li>📝 Assisted in the development of hackathon guidelines and resources</li>
            <li>💬 Communicated updates and information to participants and stakeholders</li>
         </ul>
-        <div style="display: flex; gap: 15px; margin-top: 15px;">
-            <img src="data:image/jpeg;base64,{ghrhack_img_1_b64}" alt="GHRhack Image 1" style="width: 50%; border-radius: 10px; object-fit: contain;">
-            <img src="data:image/jpeg;base64,{ghrhack_img_2_b64}" alt="GHRhack Image 2" style="width: 50%; height: 350px; border-radius: 10px; object-fit: contain;">
-        </div>
     </div>
 </div>
 """, unsafe_allow_html=True)
-

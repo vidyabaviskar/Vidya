@@ -20,3 +20,4 @@ textColor="#FDF0D5"                  # Beige text for contrast
 headless = true
 enableCORS = false
 enableXsrfProtection = false
+fileWatcherType = "none"

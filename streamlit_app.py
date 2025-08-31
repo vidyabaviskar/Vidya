@@ -1,6 +1,8 @@
 import streamlit as st
 import time
+import os
 
+os.environ["STREAMLIT_WATCHDOG"] = "false"
 # Page configuration
 st.set_page_config(
     page_title="Vidya Baviskar - Portfolio",
