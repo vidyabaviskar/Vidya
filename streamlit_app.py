@@ -354,7 +354,7 @@ projects_page = st.Page(
 experience_page = st.Page(
     page="views/experience.py",
     title="Experience",
-    icon="💼",
+    icon="🏢",
 )
 
 achievements_page = st.Page(
@@ -389,8 +389,8 @@ contact_page = st.Page(
 
 # Navigation
 pg = st.navigation({
-    "🌟 Personal": [about_page, achievements_page, volunteering_page, projects_page, experience_page, certificates_page, social_page],
-    "💼 Professional": [services_page],
+    "🌟 Personal": [about_page, achievements_page, volunteering_page, projects_page, certificates_page, social_page],
+    "💼 Professional": [services_page, experience_page],
 })
 
 # Enhanced sidebar
